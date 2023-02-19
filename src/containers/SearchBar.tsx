@@ -1,17 +1,16 @@
 import React,{ useState} from 'react';
-import {useDispatch} from 'react-redux';
+import { useAppDispatch } from 'hooks';
 import { fetchWeatherAction } from '../actions/index';
 
 const SearchBar =()=> {
     const [term,setTerm]=useState('')
-    const dispatch=useDispatch()
-    const onInputChange=( event)=>{
+    const dispatch=useAppDispatch()
+    const onInputChange=( event:any)=>{
       setTerm(event.target.value );
     }
-    const onFormSubmit=(event)=>{
+    const onFormSubmit=(event:any)=>{
         event.preventDefault();
         dispatch(fetchWeatherAction(term));
-        setTerm('');
     }
     return (
         <form onSubmit={onFormSubmit} className="input-group">

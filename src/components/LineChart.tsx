@@ -2,8 +2,7 @@ import React from 'react';
 import {Line} from 'react-chartjs-2';
 import {Chart, CategoryScale,LinearScale,PointElement,LineElement} from 'chart.js'; 
 Chart.register(LinearScale,CategoryScale,PointElement,LineElement);
-
-const LineChart=(props)=>{
+const LineChart=(props:{title:string,label:string[],data:number[]})=>{
   const data = {
     labels: props.label,
     datasets: [
@@ -23,17 +22,20 @@ const LineChart=(props)=>{
       <Line
         data={data}
         height={100}
-        options={{
-            title:{
-            display:true,
-            text:props.title,
-            fontSize:20,
-            },
-            legend:{
-            display:true,
-            position:'right'
+        options={
+          {
+            plugins:{
+              title:{
+                display:true,
+                text:props.title,
+              },
+              legend:{
+                display:true,
+                position:'right'
+              }
             }
-        }}
+          }
+        }
       />
     </div>
   )
